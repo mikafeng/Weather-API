@@ -1,0 +1,9 @@
+.weatherCard{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.card>* {
+    flex: 1 1 200px;
+}
