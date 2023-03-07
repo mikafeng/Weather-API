@@ -4,6 +4,6 @@
 
 }
 
-.card>* {
-    flex: 1 1 200px;
+.card {
+    min-width: 30%;
 }
