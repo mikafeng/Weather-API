@@ -17,14 +17,18 @@
         </div>
         
     </header>
-    
+
     <main class="container-fluid">
         <div class="row">
             <aside class="col-4">
                 <section class="input-group mb-3">
-                    <input id="search-form" type="text" class="form-control" placeholder="City, State" aria-describedby="basic-addon1">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="submitBtn">Search</button>
+                    <input id="city-search" type="text" class="form-control" placeholder="City" 
+                    aria-label="City" aria-describedby="enter city name">
+                    
+                    <div class="input-group-append input">
+                        <button class="btn btn-outline-secondary" type="button" id="submitBtn" aria-label="search">
+                            Search
+                        </button>
                     </div>
                 </section>
                 <section>
@@ -86,7 +90,13 @@
 
         </div>
     </main>
-    <footer></footer>
+    
+    <footer>
+
+    <div id="openweathermap-widget-11"></div>
+    <script src='//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js'></script>
+
+    </footer>
     <script src="/assets/script.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
