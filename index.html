@@ -10,7 +10,7 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header class="jumbotron jumbotron-fluid">
+    <header class="jumbotron jumbotron-fluid hero">
         <div class="container">
             <h1 class="display-4">Weather Dashboard</h1>
             <p>Five day weather forecast using OpenMap API</p>
@@ -32,9 +32,9 @@
                     </div>
                 </section>
                 <section>
-                    <ul class="list-group list-group-flush">
+                    <ul class="list-group list-group-flush" >
                         <li class="list-group-item active">test</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item" id="lsOutput"></li>
                         <li class="list-group-item">Morbi leo risus</li>
                         <li class="list-group-item">Porta ac consectetur ac</li>
                         <li class="list-group-item">Vestibulum at eros</li>
@@ -43,11 +43,10 @@
             </aside>
 <!-- DISPLAY WEATHER -->
             <forecast class="col-8 container">
-                <h2>Weather</h2>
-            <div class="currentWeather jumbotron">
+            <div class="currentWeather bg-gradient-info jumbotron">
 <!-- CURRENT WEATHER -->
             </div>    
-            <div class="weatherMain row gx-2 ">
+            <div class="weatherMain row gx-2">
 <!-- FORECAST WEATHER -->
             </div>
             </forecast>
