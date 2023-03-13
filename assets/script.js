@@ -17,6 +17,7 @@ var buttonClickHandler = function(event) {
 function getForecast () {
     let city = document.getElementById("city-search").value;
     let queryUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${weatherAPIkey}`;
+    
 
     fetch(queryUrl)
         .then((response) => {
@@ -32,9 +33,13 @@ function getForecast () {
 
 function displayWeather(response){
      console.log(response);
-    let row = document.getElementById('weatherCard');
-    row.innerHTML = response.daily.map(day =>{
-        return '<p>day</p>'}).join('');
+    let row = document.querySelector('.weatherMain');
+    row.innerHTML = response.list
+        .map((day, idx) =>{
+            if (idx <= 4) {
+        return '<p>day</p>'}
+    })
+        .join(' ');
     let html = `<div class="card .col">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
