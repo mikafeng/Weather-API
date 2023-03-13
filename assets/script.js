@@ -37,11 +37,12 @@ function renderSearchHistory(){
         searchItem.setAttribute("value", cityHistory[i]);
         searchItem.addEventListener("click", function () {
             getWeather(searchItem.value);
+            getForecast(searchItem.value);
     })
     searchHistoryEl.append(searchItem);
 }
-    // cityHistory.forEach()
 };
+
 
 
 //Use current weather API to pull data for current weather of input city
@@ -56,7 +57,6 @@ function getWeather () {
         })
         .then((data) => {
             displayToday(data);
-            // console.log(data)
         })
         .catch(console.error);
 
@@ -76,7 +76,6 @@ function getForecast () {
         })
        .then((data) => {
             displayWeather(data);
-            // console.log(data)
         })
         .catch(console.error);
 };
