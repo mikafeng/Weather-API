@@ -9,7 +9,25 @@ let units = 'imperial';
 var buttonClickHandler = function(event) {
     event.preventDefault();
     getForecast();
+    getWeather();
     console.log('I been clicked!')
+};
+
+
+function getWeather () {
+    let city = document.getElementById("city-search").value;
+    let queryUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${weatherAPIkey}`
+
+    fetch(queryUrl)
+        .then((response) => {
+            if (!response.ok) throw new Error(response.status);
+            return response.json();
+        })
+        .then((data) => {
+            displayToday(data);
+            // console.log(data)
+        })
+        .catch(console.error);
 };
 
 
@@ -30,6 +48,19 @@ function getForecast () {
         })
         .catch(console.error);
 };
+
+function displayToday(response){
+    console.log(response);
+    let row = document.querySelector('.currentWeather');
+    row.innerHTML = 
+    `
+    <h2>Today's Weather: ${response.weather[0].main}</h2>
+    <p class="card-text">High: ${response.main.temp_max} Low: ${response.main.temp_min}</p>
+    <p class="card-text">Wind Speed: ${response.wind.speed}</p>                        
+    <p class="card-text">Humidity: ${response.main.humidity}</p>
+    `
+};
+
 
 function displayWeather(response){
      console.log(response);
