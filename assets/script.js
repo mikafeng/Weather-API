@@ -37,16 +37,17 @@ function displayWeather(response){
     row.innerHTML = response.list
         .map((day, idx) =>{
             if (idx <= 4) {
+                let dt = new Date (day.dt*1000);
         return `
         <div class="col">
             <div class="card">
-                <h5 class="card-title p-2">Title</h5>
-                <img src="" class="card-img-top" alt=""/>
+                <h5 class="card-title p-2">${dt.toDateString()}</h5>
+                <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" class="card-img-top" alt="${day.weather[0].description}"/>
                 <div class="card-body">
-                    <h3 class="card-title">Date</h3>
-                    <p class="card-text">temperature high low</p>
-                    <p class="card-text">wind speed</p>                        
-                    <p class="card-text">humidity</p>
+                    <h3 class="card-title">${day.weather[0].main}</h3>
+                    <p class="card-text">High: ${day.main.temp_max} Low: ${day.main.temp_min}</p>
+                    <p class="card-text">Wind Speed: ${day.wind.speed}</p>                        
+                    <p class="card-text">Humidity: ${day.main.humidity}</p>
                 </div>
             </div>
         </div>   
