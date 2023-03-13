@@ -14,37 +14,63 @@ var buttonClickHandler = function(event) {
 
 
 //use Geocoding to transform city, state, country to lat, long coordinates for 5weather api call forecast
-async function getForecast () {
+function getForecast () {
     let city = document.getElementById("city-search").value;
     let queryUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${weatherAPIkey}`;
 
-    await fetch(queryUrl)
-        .then(function (response) {
+    fetch(queryUrl)
+        .then((response) => {
+            if(!response.ok) throw new Error(response.status);
             return response.json();
         })
-        .then(function (data) {
-            console.log(data)
-
-        });
+       .then((data) => {
+            displayWeather(data);
+            // console.log(data)
+        })
+        .catch(console.error);
 };
 
-function getCurrentWeather () {
-    let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${weatherAPIkey}`
-
-    fetch(queryURL)
-        .then(response => response.json())
-
-        .then(weather => {
-            console.log(weather)
-           
-            
-
-        });
+function displayWeather(response){
+     console.log(response);
+    let row = document.getElementById('weatherCard');
+    row.innerHTML = response.daily.map(day =>{
+        return '<p>day</p>'}).join('');
+    let html = `<div class="card .col">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
+                                    content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                        <div class="card .col">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            </div>
+                        </div>
+                        <div class="card .col">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                                    content. This card has even longer content than the first to show that equal height action.</p>
+                            </div>
+                        </div>
+                        <div class="card .col">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                                    content. This card has even longer content than the first to show that equal height action.</p>
+                            </div>
+                        </div>
+                        <div class="card .col">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                                    content. This card has even longer content than the first to show that equal height action.</p>
+                            </div>
+                        </div>`
 };
 
-
-
-// getParams();
 
 //create user input for city, state, country
 
