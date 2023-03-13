@@ -2,10 +2,9 @@
 const weatherAPIkey = "c12c4ce8b0b76d9ef75f2410f8b28128";
 //global vars
 const submitButton = document.getElementById('submitBtn');
-const searchHistory = document.getElementById('lsOutput');
+const searchHistoryEl = document.getElementById('lsOutput');
 let city;
 let units = 'imperial';
-
 let cityHistory = JSON.parse(localStorage.getItem("search")) || [];
 
 //Submit Button click event
@@ -16,6 +15,7 @@ var buttonClickHandler = function(event) {
     saveSearch();
 };
 
+//save cities searched to array
 function saveSearch(){
     let city = document.getElementById("city-search").value;
     cityHistory.push(city);
@@ -24,12 +24,25 @@ function saveSearch(){
 console.log(city)
     
 };
+
+//render search history under search input
 function renderSearchHistory(){
-    searchHistory.innerHTML="";
+    searchHistoryEl.innerHTML="";
     for (let i=0; i<cityHistory.length; i++) {
         console.log(cityHistory);
-    }
+        const searchItem = document.createElement("input");
+        searchItem.setAttribute("type", "text");
+        searchItem.setAttribute("readonly", true);
+        searchItem.setAttribute("class", "form-control d-block bg-white");
+        searchItem.setAttribute("value", cityHistory[i]);
+        searchItem.addEventListener("click", function () {
+            getWeather(searchItem.value);
+    })
+    searchHistoryEl.append(searchItem);
+}
+    // cityHistory.forEach()
 };
+
 
 //Use current weather API to pull data for current weather of input city
 function getWeather () {
@@ -46,13 +59,6 @@ function getWeather () {
             // console.log(data)
         })
         .catch(console.error);
-        
-        // console.log(city);
-
-    // for (let i=0; i<localStorage.length; i++) {
-    //     const value = localStorage.getItem(city);
-    //     lsOutput.innerHTML += `${value}`;
-    // }
 
 };
 
