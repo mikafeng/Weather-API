@@ -3,6 +3,7 @@ const weatherAPIkey = "c12c4ce8b0b76d9ef75f2410f8b28128";
 //global vars
 const submitButton = document.getElementById('submitBtn');
 const searchHistoryEl = document.getElementById('lsOutput');
+const clearEl = document.getElementById("clear-history");
 let city;
 let units = 'imperial';
 let cityHistory = JSON.parse(localStorage.getItem("search")) || [];
@@ -24,6 +25,12 @@ function saveSearch(){
 console.log(city)
     
 };
+
+//clear history
+clearEl.addEventListener("click", function () {
+   cityHistory = [];
+    renderSearchHistory();
+})
 
 //render search history under search input
 function renderSearchHistory(){
@@ -87,6 +94,7 @@ function displayToday(response){
     let dt = new Date (response.dt*1000);
     row.innerHTML = 
     `<div class="container">
+    <h1>${response.name}</h1>
     <h2>${dt.toDateString()}</h2>
     <div class="row">
     <h3 >Current Conditions: ${response.weather[0].main}</h3>
