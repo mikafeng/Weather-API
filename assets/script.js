@@ -37,43 +37,24 @@ function displayWeather(response){
     row.innerHTML = response.list
         .map((day, idx) =>{
             if (idx <= 4) {
-        return '<p>day</p>'}
+        return `
+        <div class="col">
+            <div class="card">
+                <h5 class="card-title p-2">Title</h5>
+                <img src="" class="card-img-top" alt=""/>
+                <div class="card-body">
+                    <h3 class="card-title">Date</h3>
+                    <p class="card-text">temperature high low</p>
+                    <p class="card-text">wind speed</p>                        
+                    <p class="card-text">humidity</p>
+                </div>
+            </div>
+        </div>   
+        `
+        }
     })
         .join(' ');
-    let html = `<div class="card .col">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                                    content. This content is a little bit longer.</p>
-                            </div>
-                        </div>
-                        <div class="card .col">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                        </div>
-                        <div class="card .col">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This card has even longer content than the first to show that equal height action.</p>
-                            </div>
-                        </div>
-                        <div class="card .col">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This card has even longer content than the first to show that equal height action.</p>
-                            </div>
-                        </div>
-                        <div class="card .col">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                                    content. This card has even longer content than the first to show that equal height action.</p>
-                            </div>
-                        </div>`
+
 };
 
 
