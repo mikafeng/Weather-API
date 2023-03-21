@@ -1,4 +1,4 @@
-# 06-Weather-API
+# Weather-API
 This application utilizes open weather map’s 5 day weather forecast and current weather API to create a weather dashboard.
 
 Link to deployed site: https://mikafeng.github.io/06-Weather-API/
